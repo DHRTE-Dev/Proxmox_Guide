@@ -5,8 +5,8 @@
 ## 목차
 - [설치 방법](#proxmox-ve-iso-다운로드-및-설치)
 - [설치 후 스크립트](#PVE-Post-Install-스크립트-실행-및-최적화)
-- [MOTD 비활성화](MOTD-비활성화)
-- [local / local-lvm 통합](#local-/-local-lvm-통합)
+- [MOTD 비활성화](#motd-비활성화)
+- [local / local-lvm 통합](#local--local-lvm-통합)
 
 - [윈도우 EFI 복구](#윈도우-듀얼부팅-사용시-윈도우-EFI-복구)
 
