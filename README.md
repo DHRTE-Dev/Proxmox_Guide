@@ -31,7 +31,7 @@ bash -c "$(curl -fsSL [https://raw.githubusercontent.com/community-scripts/Proxm
 ---
 
 ## 3. MOTD 비활성화
-SSH 로그인 시 출력되는 불필요한 리눅스 기본 환영 메시지를 비워 터미널 접속 환경을 깔끔하게 정리합니다.
+SSH 로그인 시 출력되는 불필요한 리눅스 기본 환영 메시지를 비워 터미널 접속 환경을 깔끔하게 정리합니다.  
 다음 명령어를 셸(Shell)에 입력합니다.
 
 ```bash
@@ -40,11 +40,33 @@ cat /dev/null > /etc/motd
 
 ---
 
-## 윈도우 듀얼부팅 사용시 윈도우 EFI 복구
+## 4. local / local-lvm 통합
+관리 편의성 및 저장소 용량 최대 활용을 위해 두 저장소를 통합합니다.  
+다음 명령어를 셸(Shell)에 차례대로 입력합니다.
 
+```bash
+lvremove /dev/pve/data
+```
+
+```bash
+lvresize -l +100%FREE /dev/pve/root
+```
+
+```bash
+resize2fs -p /dev/pve/root
+```
+
+이후  
+Datacenter > Storage > local-lvm > Remove(상단) 순으로 선택해서 빈껍데기만 남아있는 local-lvm을 삭제합니다.  
+Datacenter > Storage > local > Edit(상단) 순으로 선택한 후, Content란에 전부 체크를 합니다.
+
+---
+
+## 윈도우 듀얼부팅 사용시 윈도우 EFI 복구
 윈도우 듀얼부팅 사용시 윈도우 EFI를 복구합니다.
 
 **복구 환경 진입 및 명령 프롬프트 열기**
+
    1. Windows 복구 USB로 부팅합니다.
    2. 언어 및 키보드 설정 화면이 나오면 다음을 누릅니다.
    3. 왼쪽 아래의 컴퓨터 복구(R)를 클릭합니다.
