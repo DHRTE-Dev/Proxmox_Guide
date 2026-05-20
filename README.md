@@ -2,16 +2,24 @@
 
 본 문서는 Proxmox VE(PVE)를 설치한 직후 진행하는 필수 초기 설정 및 최적화 과정을 정리한 가이드라인입니다.
 
+## 목차
+- [설치 방법](#proxmox-ve-iso-다운로드-및-설치)
+- [설치 후 스크립트](#PVE-Post-Install-스크립트-실행-및-최적화)
+- [MOTD 비활성화](MOTD-비활성화)
+- [local / local-lvm 통합](#local-/-local-lvm-통합)
+
+- [윈도우 EFI 복구](#윈도우-듀얼부팅-사용시-윈도우-EFI-복구)
+
 ---
 
-## 1. Proxmox VE ISO 다운로드 및 설치
+## Proxmox VE ISO 다운로드 및 설치
 1. **ISO 다운로드**: [Proxmox 공식 다운로드 페이지](https://www.proxmox.com/en/downloads)에서 최신 버전의 Proxmox VE ISO 이미지를 다운로드합니다.
 2. **부팅 USB 제작**: Rufus 또는 Ventoy 유틸리티를 사용하여 다운로드한 ISO 파일을 USB 드라이브에 플래싱합니다.
 3. **시스템 설치**: BIOS/UEFI 진입 후 부팅 순서를 USB로 변경하여 설치를 진행합니다.
 
 ---
 
-## 2. PVE Post Install 스크립트 실행 및 최적화
+## PVE Post Install 스크립트 실행 및 최적화
 유료 구독 경고 팝업을 제거하고, 무료 사용자용 공식 저장소(Repository) 활성화 및 시스템 패키지 업그레이드를 자동화 스크립트로 처리합니다.
 
 1. Proxmox 웹 GUI 셸(Shell) 또는 SSH 터미널에 `root` 계정으로 접속합니다.
@@ -30,7 +38,7 @@ bash -c "$(curl -fsSL [https://raw.githubusercontent.com/community-scripts/Proxm
 
 ---
 
-## 3. MOTD 비활성화
+## MOTD 비활성화
 SSH 로그인 시 출력되는 불필요한 리눅스 기본 환영 메시지를 비워 터미널 접속 환경을 깔끔하게 정리합니다.  
 다음 명령어를 셸(Shell)에 입력합니다.
 
@@ -40,25 +48,30 @@ cat /dev/null > /etc/motd
 
 ---
 
-## 4. local / local-lvm 통합
+## local / local-lvm 통합
 관리 편의성 및 저장소 용량 최대 활용을 위해 두 저장소를 통합합니다.  
 다음 명령어를 셸(Shell)에 차례대로 입력합니다.
 
 ```bash
 lvremove /dev/pve/data
 ```
+local-lvm 이 연결된 부분을 제거합니다.
 
 ```bash
 lvresize -l +100%FREE /dev/pve/root
 ```
+lvresize를 통해서 새로 생긴 남은 공간들을 /dev/pve/root (local) 에 할당합니다.
 
 ```bash
 resize2fs -p /dev/pve/root
 ```
+resize2fs를 통해서 파일시스템의 크기를 변경합니다.
 
-이후  
+이후에  
 Datacenter > Storage > local-lvm > Remove(상단) 순으로 선택해서 빈껍데기만 남아있는 local-lvm을 삭제합니다.  
 Datacenter > Storage > local > Edit(상단) 순으로 선택한 후, Content란에 전부 체크를 합니다.
+
+해당 노드 > local > Summary 의 Usage 탭에서 늘어난 용량을 확인해 봅시다.
 
 ---
 
