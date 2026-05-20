@@ -27,7 +27,7 @@ bash -c "$(curl -fsSL [https://raw.githubusercontent.com/community-scripts/Proxm
 5. 'high availabily' 비활성화
 6. 'corosync' 비활성화
 
---
+---
 
 ## 3. MOTD 비활성화
 SSH 로그인 시 출력되는 불필요한 리눅스 기본 환영 메시지를 비워 터미널 접속 환경을 깔끔하게 정리합니다.
@@ -37,7 +37,7 @@ SSH 로그인 시 출력되는 불필요한 리눅스 기본 환영 메시지를
 ```bash
 cat /dev/null > /etc/motd
 
---
+---
 
 ## 윈도우 듀얼부팅 사용시 윈도우 EFI 복구
 윈도우 듀얼부팅 사용시 윈도우 EFI를 복구합니다.
@@ -66,4 +66,4 @@ sel vol 2  (EFI 볼륨 번호 입력)
 assign letter=V  (EFI 파티션에 임의로 V 드라이브 문자 할당)
 exit
 
-
+---
