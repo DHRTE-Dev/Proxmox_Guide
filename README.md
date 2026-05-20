@@ -23,7 +23,7 @@
 유료 구독 경고 팝업을 제거하고, 무료 사용자용 공식 저장소(Repository) 활성화 및 시스템 패키지 업그레이드를 자동화 스크립트로 처리합니다.
 
 1. Proxmox 웹 GUI 셸(Shell) 또는 SSH 터미널에 `root` 계정으로 접속합니다.
-2. [Proxmox VE Community Scripts](https://community-scripts.org/)의 최적화 스크립트를 실행합니다.
+2. [Proxmox VE Community Scripts](https://community-scripts.org/)의 최적화 스크립트를 실행합니다. (PVE Post Install)
 
 ```bash
 bash -c "$(curl -fsSL [https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/tools/pve/post-pve-install.sh](https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/tools/pve/post-pve-install.sh))"
