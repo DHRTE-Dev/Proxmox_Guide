@@ -75,6 +75,36 @@ Datacenter > Storage > local > Edit(상단) 순으로 선택한 후, Content란�
 
 ---
 
+## Tailscale 설치 및 연동
+포트 포워딩이나 복잡한 VPN 설정 없이, Proxmox 웹 GUI 및 가상머신(VM/CT)에 외부에서 안전하게 원격 접속할 수 있도록 가상 사설망(Tailscale)을 구축합니다.
+
+셸(Shell)에서 아래 명령어를 실행하여 리눅스용 Tailscale을 다운로드하고 설치합니다.
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+```
+
+설치 완료후 다음 명령어를 실행하여 나타난 주소로 이동하여 Tailscale 로그인 및 연동을 진행합니다.
+```bash
+tailscale up
+```
+
+이후 다음 명령어를 실행하여 시작 서비스로 등록하고 서비스를 시작합니다.
+```bash
+systemctl enable --now tailscaled
+```
+
+해당 명령어로 현재 할당된 주소와 서비스 등록을 확인합니다.
+```bash
+tailscale ip -4
+```
+
+```bash
+systemctl status tailscaled
+```
+
+---
+
 ## 윈도우 듀얼부팅 사용시 윈도우 EFI 복구
 윈도우 듀얼부팅 사용시 윈도우 EFI를 복구합니다.
 
