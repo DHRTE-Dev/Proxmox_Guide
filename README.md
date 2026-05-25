@@ -7,6 +7,7 @@
 - [설치 후 스크립트](#PVE-Post-Install-스크립트-실행-및-최적화)
 - [MOTD 비활성화](#motd-비활성화)
 - [local / local-lvm 통합](#local--local-lvm-통합)
+- [Tailscale 설치 및 연동](#Tailscale-설치-및-연동)
 
 - [윈도우 EFI 복구](#윈도우-듀얼부팅-사용시-윈도우-EFI-복구)
 
