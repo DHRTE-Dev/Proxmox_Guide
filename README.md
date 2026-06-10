@@ -9,6 +9,7 @@
 - [local / local-lvm 통합](#local--local-lvm-통합)
 - [Tailscale 설치 및 연동](#Tailscale-설치-및-연동)
 
+- [커스텀 테마 설치](#커스텀-테마-추가)
 - [윈도우 EFI 복구](#윈도우-듀얼부팅-사용시-윈도우-EFI-복구)
 
 ---
@@ -103,6 +104,22 @@ tailscale ip -4
 ```bash
 systemctl status tailscaled
 ```
+
+---
+
+## 커스텀 테마 추가
+
+[GitHub Project](#https://github.com/IT-BAER/proxmorph)
+
+```
+bash <(curl -fsSL https://raw.githubusercontent.com/IT-BAER/proxmorph/main/install.sh) install
+```
+
+적용법
+1. 브라우저 새로고침 (Ctrl+Shift+R)
+2. 콘솔 우상단 : 유저 이름 > Color Theme
+3. ProxMoph 테마 선택
+
 
 ---
 
