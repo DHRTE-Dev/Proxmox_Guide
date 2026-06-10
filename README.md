@@ -109,7 +109,7 @@ systemctl status tailscaled
 
 ## 커스텀 테마 추가
 
-[GitHub Project](#https://github.com/IT-BAER/proxmorph)
+[GitHub Project](https://github.com/IT-BAER/proxmorph)
 
 ```
 bash <(curl -fsSL https://raw.githubusercontent.com/IT-BAER/proxmorph/main/install.sh) install
