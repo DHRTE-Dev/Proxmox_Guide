@@ -61,10 +61,11 @@ lvremove /dev/pve/data
 
 lvresize를 통해서 새로 생긴 남은 공간들을 /dev/pve/root (local) 에 할당합니다.
 ```bash
-lvresize -l +100%FREE /dev/pve/root
+lvresize -r -l +100%FREE /dev/pve/root
 ```
 
 resize2fs를 통해서 파일시스템의 크기를 변경합니다.
+(이전 명령어 실행 시 해당 명령어는 건너뛰어도 무방합니다. '-r' 옵션 생략 시 필수)
 ```bash
 resize2fs -p /dev/pve/root
 ```
