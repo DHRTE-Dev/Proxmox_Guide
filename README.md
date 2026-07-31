@@ -64,7 +64,7 @@ lvresize를 통해서 새로 생긴 남은 공간들을 /dev/pve/root (local) �
 lvresize -r -l +100%FREE /dev/pve/root
 ```
 
-resize2fs를 통해서 파일시스템의 크기를 변경합니다.
+resize2fs를 통해서 파일시스템의 크기를 변경합니다.  
 (이전 명령어 실행 시 해당 명령어는 건너뛰어도 무방합니다. '-r' 옵션 생략 시 필수)
 ```bash
 resize2fs -p /dev/pve/root
@@ -72,8 +72,8 @@ resize2fs -p /dev/pve/root
 
 이후에  
 Datacenter > Storage > local-lvm > Remove(상단) 순으로 선택해서 빈껍데기만 남아있는 local-lvm을 삭제합니다.  
-Datacenter > Storage > local > Edit(상단) 순으로 선택한 후, Content란에 전부 체크를 합니다.
-
+Datacenter > Storage > local > Edit(상단) 순으로 선택한 후, Content란에 전부 체크를 합니다.  
+  
 해당 노드 > local > Summary 의 Usage 탭에서 늘어난 용량을 확인해 봅시다.
 
 ---
