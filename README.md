@@ -54,20 +54,20 @@ cat /dev/null > /etc/motd
 관리 편의성 및 저장소 용량 최대 활용을 위해 두 저장소를 통합합니다.  
 다음 명령어를 셸(Shell)에 차례대로 입력합니다.
 
+local-lvm 이 연결된 부분을 제거합니다.
 ```bash
 lvremove /dev/pve/data
 ```
-local-lvm 이 연결된 부분을 제거합니다.
 
+lvresize를 통해서 새로 생긴 남은 공간들을 /dev/pve/root (local) 에 할당합니다.
 ```bash
 lvresize -l +100%FREE /dev/pve/root
 ```
-lvresize를 통해서 새로 생긴 남은 공간들을 /dev/pve/root (local) 에 할당합니다.
 
+resize2fs를 통해서 파일시스템의 크기를 변경합니다.
 ```bash
 resize2fs -p /dev/pve/root
 ```
-resize2fs를 통해서 파일시스템의 크기를 변경합니다.
 
 이후에  
 Datacenter > Storage > local-lvm > Remove(상단) 순으로 선택해서 빈껍데기만 남아있는 local-lvm을 삭제합니다.  
